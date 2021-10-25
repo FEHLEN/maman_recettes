@@ -6,6 +6,7 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
         <link rel="stylesheet" href="/assets/css/style.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {% block javascripts %}{% endblock %}
@@ -13,7 +14,7 @@
     <body>
         <header>
            <nav class="navbar fixed-top navbar-light" style="background-color:#563d7c;">
-            <a class="navbar-brand" style="font-size:2em;" href="/">Maman Recettes</a>
+            <a class="navbar-brand" style="font-size:2em;" href="/"><img src="/assets/images/logoMamanSF.png" width="100"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="font-size:2em;"></span>
             </button>
