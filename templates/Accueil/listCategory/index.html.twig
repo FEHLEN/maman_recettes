@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page liste des catégories{% endblock %}
+
+ {% block body %}
+   <h1 class="text-center">Voici la liste des catégories</h1>
+    <div class="container category">
+      
+      <ul class="list-group">
+        {% for category in categories %}
+          <a href="{{ path('byCategory', {'id':category.id} )}}" class="list-group-item list-group-item-action list-group-item-primary d-flex justify-content-between align-items-center">
+            {{ category.libelle }}
+            <span class="badge badge-primary rounded-pill">{{ category.recettes | length }}  recette(s)</span>
+          </a>
+     
+        {% endfor %}
+      </ul>
+    </div>
+  {% endblock %}

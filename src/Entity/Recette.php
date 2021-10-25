@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecetteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,19 +25,19 @@ class Recette
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=100)
      */
     private $tempprepa;
 
     /**
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $tempscuisson;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $imageNom;
+    private $imagerecette;
 
     /**
      * @ORM\Column(type="text")
@@ -48,14 +50,20 @@ class Recette
     private $explications;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="recettes")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="recettes")
      */
-    private $categoriesId;
+    private $categorie;
+
+    public function __construct()
+    {
+        $this->categorie = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -79,7 +87,7 @@ class Recette
         return $this->tempprepa;
     }
 
-    public function setTempprepa(?string $tempprepa): self
+    public function setTempprepa(string $tempprepa): self
     {
         $this->tempprepa = $tempprepa;
 
@@ -98,14 +106,14 @@ class Recette
         return $this;
     }
 
-    public function getImageNom(): ?string
+    public function getImagerecette(): ?string
     {
-        return $this->imageNom;
+        return $this->imagerecette;
     }
 
-    public function setImageNom(string $imageNom): self
+    public function setImagerecette(string $imagerecette): self
     {
-        $this->imageNom = $imageNom;
+        $this->imagerecette = $imagerecette;
 
         return $this;
     }
@@ -134,26 +142,40 @@ class Recette
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+  
+
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCategoriesId(): ?Category
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategorie(): Collection
     {
-        return $this->categoriesId;
+        return $this->categorie;
     }
 
-    public function setCategoriesId(?Category $categoriesId): self
+    public function addCategorie(Category $categorie): self
     {
-        $this->categoriesId = $categoriesId;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Category $categorie): self
+    {
+        $this->categorie->removeElement($categorie);
 
         return $this;
     }

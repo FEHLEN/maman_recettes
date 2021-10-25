@@ -8,30 +8,37 @@
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="/assets/css/style.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
-    <header>
-        <nav class="navbar fixed-top navbar-light" style="background-color:#563d7c;">
-            <a class="navbar-brand" style="font-size:2.5em;" href="#">Maman Recettes</a>
+        <header>
+           <nav class="navbar fixed-top navbar-light" style="background-color:#563d7c;">
+            <a class="navbar-brand" style="font-size:2em;" href="/">Maman Recettes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="font-size:2em;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" style="font-size:2em;" href="#">Accueil<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="font-size:2em;" href="/">Accueil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="font-size:2em;" href="#category">Catégories</a>
+                    <a class="nav-link" style="font-size:2em;" href="{{ path('listCategory') }}">Catégories</a>
                 </li>
             </div>
-        </nav>
-    </header>
-        <div class="container-fluid">
-        {% block body %}{% endblock %}
+        </nav> 
+        </header>
+        <div class="container-fluid" id="corps" >
+            {% block body %}{% endblock %}
         </div>
+        <footer>
+            <div class="developpement">
+            <p>&copy 2021 Maman Recettes | développé par <a href="https://webnelldev.fr">webnelldev</a></p>
+        </div>
+        </footer>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
+    
 </html>

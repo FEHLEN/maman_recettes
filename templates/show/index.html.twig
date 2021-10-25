@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page Recette choisie{% endblock %}
+
+{% block body %}
+   <div class="container text-center">
+        <div class="img">
+           <img class="image" src="/assets/images/{{ recette.imagerecette }}" width="500" alt="{{ recette.titre }}">
+        </div>
+        <p class="date">Ecrit le : {{ recette.createdAt | date("d/m/Y") }} </p>
+        <div class="content">
+            <h1 class="titre">{{ recette.titre }}</h1>
+            <p class="temps"><em>Temps de préparation</em> : {{ recette.tempprepa }} || <em>Temps de cuisson</em> : {{ recette.tempscuisson }}</p>
+            <p class="ingredients"><em>Ingrédients</em> : {{ recette.ingredients | raw }}
+            <p class="texte"><em>Explications</em> : {{ recette.explications | raw }} </p>
+            
+        </div>
+        <div class="boutonRetour">
+           <a href="/" class="btn btn-success">Retour à l'accueil</a>
+        </div>
+    </div>
+ {% endblock %}

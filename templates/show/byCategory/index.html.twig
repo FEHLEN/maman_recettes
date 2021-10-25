@@ -1,22 +1,20 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Par catégorie{% endblock %}
 
  {% block body %}
- <h1 class="titre">Bienvenue chez Maman Recettes</h1>
- <div class="container-fluid cartes" >
-   {% for recette in recettes %}
+    <h2>Recettes par catégorie</h2>
+    <div class="container-fluid cartes" >
+       {% for recette in recettes %}
         <div class="carte"><!--hauteur 250px-->
               <div class="carte-image">
-                <img class="carte-img-top" src="./assets/images/{{recette.imagerecette}}" width="262" height="250" alt="Photo de {{recette.titre}}"/>
+                <img class="carte-img-top" src="/assets/images/{{recette.imagerecette}}" width="262" height="250" alt="Photo de {{recette.titre}}"/>
               </div>
               <div class="carte-body">
                 <h5 class="carte-title">{{ recette.titre }}</h5>
                 <a href="/show/{{recette.id}}" class="btn btn-primary">En savoir plus</a>
               </div>
-            
-      
         </div>
-    {% endfor %}
- </div>
+      {% endfor %}
+    </div>
  {% endblock %}

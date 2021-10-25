@@ -1,3 +1,16 @@
 
-
-.titre{margin-top: 100px;text-align: center;}
+#corps{margin-top: 100px;}
+#corps p{font-size: 1.5em;}
+#corps h2{font-weight: bold;font-size: 1.5em;}
+.titre{margin-top: 20px;text-align: center;color:#563d7c ;text-shadow: 2px 1px grey;}
+.ingredients{border-bottom: 2px solid #563d7c;padding-bottom: 20px;}
+em{font-weight: bold;color:#563d7c;}
+.cartes{display:flex;flex-direction: row;flex-wrap: wrap; justify-content: space-around;width: 100%;height: auto;padding-bottom: 50px;}
+.carte{height: 300px;width: 250px;margin:10px;background-color: rgb(230, 238, 240);border-radius: 20px;box-shadow: 5px 20px 10px 5px grey;}
+.carte-image{width: 250px;border-radius: 20px;height: 150px;}
+.carte-body{height: 150px;text-align: center;}
+.carte-img-top{height: 150px;width: 100%;border-radius: 20px;}
+.carte-title{text-align: center;margin-top: 5px;}
+.developpement{border-top: 2px solid #563d7c;padding-top: 20px;}
+.boutonRetour{margin-bottom: 50px;}
+ul.list-group{margin-bottom: 20px;}

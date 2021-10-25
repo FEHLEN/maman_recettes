@@ -25,7 +25,7 @@ class Category
     private $libelle;
 
     /**
-     * @ORM\OneToMany(targetEntity=Recette::class, mappedBy="categoriesId")
+     * @ORM\ManyToMany(targetEntity=Recette::class, mappedBy="categorie")
      */
     private $recettes;
 
@@ -50,6 +50,9 @@ class Category
 
         return $this;
     }
+    public function __toString(){
+        return $this->libelle;
+    }
 
     /**
      * @return Collection|Recette[]
@@ -63,7 +66,7 @@ class Category
     {
         if (!$this->recettes->contains($recette)) {
             $this->recettes[] = $recette;
-            $recette->setCategoriesId($this);
+            $recette->addCategorie($this);
         }
 
         return $this;
@@ -72,10 +75,7 @@ class Category
     public function removeRecette(Recette $recette): self
     {
         if ($this->recettes->removeElement($recette)) {
-            // set the owning side to null (unless already changed)
-            if ($recette->getCategoriesId() === $this) {
-                $recette->setCategoriesId(null);
-            }
+            $recette->removeCategorie($this);
         }
 
         return $this;
